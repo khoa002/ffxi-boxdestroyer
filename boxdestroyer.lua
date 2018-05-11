@@ -108,11 +108,9 @@ function display(id, chances)
     else
         windower.add_to_chat(207, 'possible combinations: ' .. table.concat(box[id], ' '))
     end
-    local remaining = math.floor(#box[id] / math.pow(2, (chances - 1)))
-    if remaining == 0 then
-        remaining = 1
-    end
-    windower.add_to_chat(207, 'best guess: %d (%d%%)':format(box[id][math.ceil(#box[id] / 2)], (1 - (#box[id] / #default) * 100)))
+	local best_guess = box[id][math.ceil(#box[id] / 2)];
+	local best_guess_p = 1 / #box[id] * 100;
+    windower.add_to_chat(207, 'best guess: %d (%d%%)':format(best_guess, best_guess_p))
 end
 
 -- ID obtaining helper function
